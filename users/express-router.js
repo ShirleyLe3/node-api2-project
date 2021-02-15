@@ -1,5 +1,5 @@
 const express = require("express");
-const posts = require("./data/db.js");
+const posts = require("../data/db.js");
 
 const router = express.Router();
 
@@ -47,7 +47,7 @@ router.get("/api/posts", (req, res) => {
 router.get("/api/posts/:id", (req, res) => {
   posts
     .findById(req.params.id)
-    .then((posts) => {
+    .then((post) => {
       if (post) {
         res.status(200).json(post);
       } else {
@@ -91,8 +91,8 @@ router.get("api/posts/:id/comments", (req, res) => {
 //--------------------------------------------------------------------------
 
 // POST  /api/posts  Creates a post using the information sent inside the `request body`.
-router.post("api/posts", (req, res) => {
-  if (!req.body.post || !req.comment) {
+router.post("api/id/posts", (req, res) => {
+  if (!req.body.title) {
     return res.status(400).json({
       message: "Missing post id or comment id",
     });

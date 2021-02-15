@@ -4,7 +4,6 @@ const db = knex(knexConfig.development);
 // const posts = require(db);
 
 module.exports = {
-  posts,
   find,
   findById,
   insert,
